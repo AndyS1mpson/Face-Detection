@@ -7,8 +7,8 @@ from detecotrs import template_matching, viola_jones
 def save_image():
     global image
     im = Image.open(filedialog.askopenfilename(title='open'))
+    im = im.resize((350, 400))
     im.save("images/img.jpg")
-    im = im.resize((500, 400))
     image = ImageTk.PhotoImage(im)
     image_label = Label(templ_match_tab, image=image)
     image_label.grid(row=7, column=0, padx=15, pady=10)
@@ -16,8 +16,8 @@ def save_image():
 def save_template():
     global templ
     im = Image.open(filedialog.askopenfilename(title='open'))
-    im.save("images/template.jpg")
-    im = im.resize((300, 200))
+    im2 = im.resize((220, 200))
+    im2.save("images/template.jpg")
     templ = ImageTk.PhotoImage(im)
     template_label = Label(templ_match_tab, image=templ)
     template_label.grid(row=7, column=1, padx=15, pady=10)
@@ -27,7 +27,7 @@ def tm_result():
     template_matching(method.get())
     result = Image.open("images/result.jpg")
     #result.save("images/result.jpg")
-    result = result.resize((500, 400))
+    result = result.resize((350, 400))
     result_image = ImageTk.PhotoImage(result)
     result_label = Label(templ_match_tab, image=result_image)
     result_label.grid(row=7, column=2, padx=15, pady=10)   
@@ -36,7 +36,7 @@ def vj_save_image():
     global v_image
     im = Image.open(filedialog.askopenfilename(title='open'))
     im.save("images/img.jpg")
-    im = im.resize((500, 500))
+    im = im.resize((350, 400))
     v_image = ImageTk.PhotoImage(im)
     image_label = Label(viola_jones_tab, image=v_image)
     image_label.grid(row=1, column=0, padx=15, pady=10)
@@ -45,7 +45,7 @@ def vj_result():
     global v_result_image
     viola_jones()
     result = Image.open("images/result.jpg")
-    result = result.resize((500, 500))
+    result = result.resize((350, 400))
     v_result_image = ImageTk.PhotoImage(result)
     v_result_label = Label(viola_jones_tab, image=v_result_image)
     v_result_label.grid(row=1, column=1, padx=15, pady=10) 
